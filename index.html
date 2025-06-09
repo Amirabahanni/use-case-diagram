@@ -4,108 +4,108 @@
   <meta charset="UTF-8">
   <title>Vision Use Case Diagram</title>
   <style>
-    font-family: 'Segoe UI', sans-serif;
-      margin: 0; padding: 20px;
-      background: linear-gradient(135deg, #f093fb, #f5576c);
-      display: flex; justify-content: center;
-      align-items: center; min-height: 100vh;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f6f8;
     }
-    .container {
-      position: relative; width: 90vw;
-      max-width: 1200px; background: white;
-      border-radius: 15px; padding: 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+
+    .diagram-container {
+      max-width: 1300px;
+      margin: 0 auto;
     }
+
     .title {
-      text-align: center; font-size: 26px;
+      text-align: center;
+      font-size: 24px;
       margin-bottom: 20px;
-      border-bottom: 3px solid #e74c3c;
-      padding-bottom: 10px;
-      color: #2c3e50;
     }
-    .diagram {
-      position: relative;
-      width: 100%; height: 600px;
-    }
-    .actor, .use-case {
-      position: absolute; text-align: center;
-    }
-    .actor-icon {
-      width: 50px; height: 50px;
-      border-radius: 50%; background: #667eea;
-      display: flex; align-items: center;
-      justify-content: center;
-      color: white; font-size: 24px;
-      margin: 0 auto 5px;
-    }
-    .actor-name {
-      font-size: 14px; font-weight: bold;
-      background: white; padding: 4px 10px;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .use-case {
-      padding: 10px 18px; border-radius: 20px;
-      font-size: 13px; color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .standard { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-    .ai { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-    .admin { background: linear-gradient(135deg, #fa709a, #fee140); }
 
-    /* Positions */
-    .bank-staff { top: 50px; left: 30px; }
-    .data-analyst { top: 200px; left: 30px; }
-    .manager { top: 350px; left: 30px; }
-    .admin { top: 250px; right: 30px; }
-
-    .uc1  { top:  50px; left: 200px; }
-    .uc2  { top:  50px; left: 360px; }
-    .uc3  { top: 130px; left: 280px; }
-    .uc4  { top: 200px; left: 200px; }
-    .uc5  { top: 200px; left: 360px; }
-    .uc6  { top: 280px; left: 300px; }
-    .uc7  { top: 280px; left: 420px; }
-    .uc8  { top: 340px; left: 200px; }
-    .uc9  { top: 340px; left: 380px; }
-    .uc10 { top: 400px; left: 300px; }
-    .uc11 { top: 460px; left: 200px; }
-    .uc12 { top: 460px; left: 360px; }
-
-    .legend {
-      position: absolute; bottom: 20px; right: 20px;
-      background: white; padding: 12px;
-      border-radius: 10px; font-size: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .legend-item {
-      display: flex; align-items: center; margin: 4px 0;
-    }
-    .legend-box {
-      width: 16px; height: 16px;
-      border-radius: 4px; margin-right: 8px;
-    }
     .diagram-area {
       position: relative;
-      height: 800px;
-      background: #f8f9fa;
+      background: #fff;
+      height: 700px;
+      border: 2px solid #ccc;
       border-radius: 10px;
-      border: 2px dashed #dee2e6;
       overflow: hidden;
     }
+
+    .system-boundary {
+      position: absolute;
+      top: 80px;
+      left: 250px;
+      width: 700px;
+      height: 540px;
+      border: 2px dashed #999;
+      border-radius: 10px;
+    }
+
+    .system-title {
+      position: absolute;
+      top: -25px;
+      left: 20px;
+      background: white;
+      padding: 0 10px;
+      font-weight: bold;
+    }
+
+    .actor, .use-case {
+      position: absolute;
+      padding: 8px 12px;
+      border-radius: 20px;
+      background: #e1f5fe;
+      border: 1px solid #0277bd;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .actor {
+      width: 100px;
+      background: #f1f8e9;
+      border: 1px solid #689f38;
+    }
+
+    .actor .actor-icon {
+      font-size: 24px;
+    }
+
+    .use-case {
+      width: 160px;
+    }
+
+    /* Actor positions */
+    #actor-bank { top: 120px; left: 50px; }
+    #actor-analyst { top: 250px; left: 50px; }
+    #actor-manager { top: 380px; left: 50px; }
+    #actor-admin { top: 510px; left: 50px; }
+
+    /* Use case positions inside the system */
+    #uc1 { top: 110px; left: 300px; }
+    #uc2 { top: 180px; left: 300px; }
+    #uc3 { top: 250px; left: 300px; }
+    #uc4 { top: 110px; left: 500px; }
+    #uc5 { top: 180px; left: 500px; }
+    #uc6 { top: 250px; left: 500px; }
+    #uc7 { top: 320px; left: 300px; }
+    #uc8 { top: 390px; left: 300px; }
+    #uc9 { top: 460px; left: 300px; }
+    #uc10 { top: 530px; left: 300px; }
+    #uc11 { top: 390px; left: 500px; }
+    #uc12 { top: 460px; left: 500px; }
 
     svg.connector {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 0;
     }
 
     line {
-      stroke: #7f8c8d;
+      stroke: #666;
       stroke-width: 2;
     }
   </style>
@@ -114,55 +114,54 @@
   <div class="diagram-container">
     <div class="title">Vision Platform - Use Case Diagram</div>
     <div class="diagram-area" id="diagramArea">
-      
-      <!-- System boundary -->
+
+      <!-- Actors -->
+      <div class="actor" id="actor-bank">
+        <div class="actor-icon">👨‍💼</div>
+        Bank Staff
+      </div>
+
+      <div class="actor" id="actor-analyst">
+        <div class="actor-icon">📊</div>
+        Data Analyst
+      </div>
+
+      <div class="actor" id="actor-manager">
+        <div class="actor-icon">👔</div>
+        Manager
+      </div>
+
+      <div class="actor" id="actor-admin">
+        <div class="actor-icon">⚙️</div>
+        Administrator
+      </div>
+
+      <!-- System -->
       <div class="system-boundary">
         <div class="system-title">Vision Data Analysis Platform</div>
       </div>
 
-      <!-- Actors -->
-      <div class="actor bank-staff" id="actor-bank">
-        <div class="actor-icon">👨‍💼</div>
-        <div class="actor-name">Bank Staff</div>
-      </div>
-
-      <div class="actor data-analyst" id="actor-analyst">
-        <div class="actor-icon">📊</div>
-        <div class="actor-name">Data Analyst</div>
-      </div>
-
-      <div class="actor manager" id="actor-manager">
-        <div class="actor-icon">👔</div>
-        <div class="actor-name">Manager</div>
-      </div>
-
-      <div class="actor admin" id="actor-admin">
-        <div class="actor-icon">⚙️</div>
-        <div class="actor-name">Administrator</div>
-      </div>
-
       <!-- Use Cases -->
-      <div class="use-case uc1" id="uc1">Import Data Files</div>
-      <div class="use-case uc2" id="uc2">View Dataset Preview</div>
-      <div class="use-case uc3 ai-feature" id="uc3">Chat with AI About Data</div>
-      <div class="use-case uc4" id="uc4">Generate Statistics</div>
-      <div class="use-case uc5" id="uc5">Create Visualizations</div>
-      <div class="use-case uc6 ai-feature" id="uc6">Ask Natural Language Questions</div>
-      <div class="use-case uc7" id="uc7">Export Analysis Results</div>
-      <div class="use-case uc8" id="uc8">Detect Data Anomalies</div>
-      <div class="use-case uc9" id="uc9">Create Custom Reports</div>
-      <div class="use-case uc10" id="uc10">View Dashboard</div>
-      <div class="use-case uc11 admin-feature" id="uc11">Configure AI Models</div>
-      <div class="use-case uc12 admin-feature" id="uc12">Manage User Access</div>
+      <div class="use-case" id="uc1">Import Data Files</div>
+      <div class="use-case" id="uc2">View Dataset Preview</div>
+      <div class="use-case" id="uc3">Chat with AI About Data</div>
+      <div class="use-case" id="uc4">Generate Statistics</div>
+      <div class="use-case" id="uc5">Create Visualizations</div>
+      <div class="use-case" id="uc6">Ask Natural Language Questions</div>
+      <div class="use-case" id="uc7">Export Analysis Results</div>
+      <div class="use-case" id="uc8">Detect Data Anomalies</div>
+      <div class="use-case" id="uc9">Create Custom Reports</div>
+      <div class="use-case" id="uc10">View Dashboard</div>
+      <div class="use-case" id="uc11">Configure AI Models</div>
+      <div class="use-case" id="uc12">Manage User Access</div>
 
-      <!-- SVG connector lines -->
+      <!-- SVG connector -->
       <svg class="connector" id="svgConnector"></svg>
     </div>
   </div>
 
   <script>
     const connections = [
-      // Format: [sourceId, targetId]
       ["actor-bank", "uc1"],
       ["actor-bank", "uc2"],
       ["actor-bank", "uc3"],
@@ -179,19 +178,20 @@
 
     function drawConnections() {
       const svg = document.getElementById("svgConnector");
-      svg.innerHTML = ""; // Clear old lines
+      svg.innerHTML = "";
+
+      const containerRect = document.getElementById("diagramArea").getBoundingClientRect();
 
       connections.forEach(([fromId, toId]) => {
-        const from = document.getElementById(fromId);
-        const to = document.getElementById(toId);
+        const fromEl = document.getElementById(fromId);
+        const toEl = document.getElementById(toId);
 
-        const fromRect = from.getBoundingClientRect();
-        const toRect = to.getBoundingClientRect();
-        const containerRect = svg.getBoundingClientRect();
+        const fromRect = fromEl.getBoundingClientRect();
+        const toRect = toEl.getBoundingClientRect();
 
-        const x1 = fromRect.left + fromRect.width / 2 - containerRect.left;
+        const x1 = fromRect.right - containerRect.left;
         const y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
-        const x2 = toRect.left + toRect.width / 2 - containerRect.left;
+        const x2 = toRect.left - containerRect.left;
         const y2 = toRect.top + toRect.height / 2 - containerRect.top;
 
         const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
