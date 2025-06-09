@@ -1,210 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Vision Use Case Diagram</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f4f6f8;
-    }
-
-    .diagram-container {
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .title {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .diagram-area {
-      position: relative;
-      background: #fff;
-      height: 700px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .system-boundary {
-      position: absolute;
-      top: 80px;
-      left: 250px;
-      width: 700px;
-      height: 540px;
-      border: 2px dashed #999;
-      border-radius: 10px;
-    }
-
-    .system-title {
-      position: absolute;
-      top: -25px;
-      left: 20px;
-      background: white;
-      padding: 0 10px;
-      font-weight: bold;
-    }
-
-    .actor, .use-case {
-      position: absolute;
-      padding: 8px 12px;
-      border-radius: 20px;
-      background: #e1f5fe;
-      border: 1px solid #0277bd;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .actor {
-      width: 100px;
-      background: #f1f8e9;
-      border: 1px solid #689f38;
-    }
-
-    .actor .actor-icon {
-      font-size: 24px;
-    }
-
-    .use-case {
-      width: 160px;
-    }
-
-    /* Actor positions */
-    #actor-bank { top: 120px; left: 50px; }
-    #actor-analyst { top: 250px; left: 50px; }
-    #actor-manager { top: 380px; left: 50px; }
-    #actor-admin { top: 510px; left: 50px; }
-
-    /* Use case positions inside the system */
-    #uc1 { top: 110px; left: 300px; }
-    #uc2 { top: 180px; left: 300px; }
-    #uc3 { top: 250px; left: 300px; }
-    #uc4 { top: 110px; left: 500px; }
-    #uc5 { top: 180px; left: 500px; }
-    #uc6 { top: 250px; left: 500px; }
-    #uc7 { top: 320px; left: 300px; }
-    #uc8 { top: 390px; left: 300px; }
-    #uc9 { top: 460px; left: 300px; }
-    #uc10 { top: 530px; left: 300px; }
-    #uc11 { top: 390px; left: 500px; }
-    #uc12 { top: 460px; left: 500px; }
-
-    svg.connector {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    line {
-      stroke: #666;
-      stroke-width: 2;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Use Case Diagram</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .diagram-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 15px;
+        }
+        
+        .diagram-area {
+            position: relative;
+            height: 800px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px dashed #dee2e6;
+            overflow: hidden;
+        }
+        
+        .actor {
+            position: absolute;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .actor-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin: 0 auto 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .actor-name {
+            font-weight: bold;
+            font-size: 14px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .use-case {
+            position: absolute;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-width: 140px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .use-case:hover {
+            transform: scale(1.05);
+        }
+        
+        .use-case.ai-feature {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .use-case.admin-feature {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .system-boundary {
+            position: absolute;
+            border: 3px solid #3498db;
+            border-radius: 15px;
+            background: rgba(52, 152, 219, 0.05);
+            left: 200px;
+            top: 50px;
+            width: 700px;
+            height: 650px;
+        }
+        
+        .system-title {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: #7f8c8d;
+            z-index: 1;
+        }
+        
+        /* Actor positions */
+        .bank-staff { top: 100px; left: 50px; }
+        .data-analyst { top: 300px; left: 50px; }
+        .manager { top: 500px; left: 50px; }
+        .admin { top: 350px; left: 950px; }
+        
+        /* Use case positions */
+        .uc1 { top: 100px; left: 250px; }
+        .uc2 { top: 100px; left: 450px; }
+        .uc3 { top: 180px; left: 350px; }
+        .uc4 { top: 260px; left: 250px; }
+        .uc5 { top: 260px; left: 450px; }
+        .uc6 { top: 340px; left: 300px; }
+        .uc7 { top: 340px; left: 500px; }
+        .uc8 { top: 420px; left: 250px; }
+        .uc9 { top: 420px; left: 450px; }
+        .uc10 { top: 500px; left: 350px; }
+        .uc11 { top: 580px; left: 250px; }
+        .uc12 { top: 580px; left: 450px; }
+        
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 12px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="diagram-container">
-    <div class="title">Vision Platform - Use Case Diagram</div>
-    <div class="diagram-area" id="diagramArea">
-
-      <!-- Actors -->
-      <div class="actor" id="actor-bank">
-        <div class="actor-icon">👨‍💼</div>
-        Bank Staff
-      </div>
-
-      <div class="actor" id="actor-analyst">
-        <div class="actor-icon">📊</div>
-        Data Analyst
-      </div>
-
-      <div class="actor" id="actor-manager">
-        <div class="actor-icon">👔</div>
-        Manager
-      </div>
-
-      <div class="actor" id="actor-admin">
-        <div class="actor-icon">⚙️</div>
-        Administrator
-      </div>
-
-      <!-- System -->
-      <div class="system-boundary">
-        <div class="system-title">Vision Data Analysis Platform</div>
-      </div>
-
-      <!-- Use Cases -->
-      <div class="use-case" id="uc1">Import Data Files</div>
-      <div class="use-case" id="uc2">View Dataset Preview</div>
-      <div class="use-case" id="uc3">Chat with AI About Data</div>
-      <div class="use-case" id="uc4">Generate Statistics</div>
-      <div class="use-case" id="uc5">Create Visualizations</div>
-      <div class="use-case" id="uc6">Ask Natural Language Questions</div>
-      <div class="use-case" id="uc7">Export Analysis Results</div>
-      <div class="use-case" id="uc8">Detect Data Anomalies</div>
-      <div class="use-case" id="uc9">Create Custom Reports</div>
-      <div class="use-case" id="uc10">View Dashboard</div>
-      <div class="use-case" id="uc11">Configure AI Models</div>
-      <div class="use-case" id="uc12">Manage User Access</div>
-
-      <!-- SVG connector -->
-      <svg class="connector" id="svgConnector"></svg>
+    <div class="diagram-container">
+        <div class="title">Vision Platform - Use Case Diagram</div>
+        
+        <div class="diagram-area">
+            <!-- System boundary -->
+            <div class="system-boundary">
+                <div class="system-title">Vision Data Analysis Platform</div>
+            </div>
+            
+            <!-- Actors -->
+            <div class="actor bank-staff">
+                <div class="actor-icon">👨‍💼</div>
+                <div class="actor-name">Bank Staff</div>
+            </div>
+            
+            <div class="actor data-analyst">
+                <div class="actor-icon">📊</div>
+                <div class="actor-name">Data Analyst</div>
+            </div>
+            
+            <div class="actor manager">
+                <div class="actor-icon">👔</div>
+                <div class="actor-name">Manager</div>
+            </div>
+            
+            <div class="actor admin">
+                <div class="actor-icon">⚙️</div>
+                <div class="actor-name">Administrator</div>
+            </div>
+            
+            <!-- Use Cases -->
+            <div class="use-case uc1">Import Data Files</div>
+            <div class="use-case uc2">View Dataset Preview</div>
+            <div class="use-case uc3 ai-feature">Chat with AI About Data</div>
+            <div class="use-case uc4">Generate Statistics</div>
+            <div class="use-case uc5">Create Visualizations</div>
+            <div class="use-case uc6 ai-feature">Ask Natural Language Questions</div>
+            <div class="use-case uc7">Export Analysis Results</div>
+            <div class="use-case uc8">Detect Data Anomalies</div>
+            <div class="use-case uc9">Create Custom Reports</div>
+            <div class="use-case uc10">View Dashboard</div>
+            <div class="use-case uc11 admin-feature">Configure AI Models</div>
+            <div class="use-case uc12 admin-feature">Manage User Access</div>
+            
+            <!-- Connection lines would be drawn with SVG or CSS, simplified here -->
+        </div>
+        
+        <div class="legend">
+            <div style="font-weight: bold; margin-bottom: 10px;">Use Case Types:</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                Standard Features
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                AI-Powered Features
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                Admin Features
+            </div>
+        </div>
     </div>
-  </div>
-
-  <script>
-    const connections = [
-      ["actor-bank", "uc1"],
-      ["actor-bank", "uc2"],
-      ["actor-bank", "uc3"],
-      ["actor-analyst", "uc4"],
-      ["actor-analyst", "uc5"],
-      ["actor-analyst", "uc6"],
-      ["actor-analyst", "uc7"],
-      ["actor-manager", "uc8"],
-      ["actor-manager", "uc9"],
-      ["actor-manager", "uc10"],
-      ["actor-admin", "uc11"],
-      ["actor-admin", "uc12"]
-    ];
-
-    function drawConnections() {
-      const svg = document.getElementById("svgConnector");
-      svg.innerHTML = "";
-
-      const containerRect = document.getElementById("diagramArea").getBoundingClientRect();
-
-      connections.forEach(([fromId, toId]) => {
-        const fromEl = document.getElementById(fromId);
-        const toEl = document.getElementById(toId);
-
-        const fromRect = fromEl.getBoundingClientRect();
-        const toRect = toEl.getBoundingClientRect();
-
-        const x1 = fromRect.right - containerRect.left;
-        const y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
-        const x2 = toRect.left - containerRect.left;
-        const y2 = toRect.top + toRect.height / 2 - containerRect.top;
-
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", x1);
-        line.setAttribute("y1", y1);
-        line.setAttribute("x2", x2);
-        line.setAttribute("y2", y2);
-        svg.appendChild(line);
-      });
-    }
-
-    window.addEventListener("load", drawConnections);
-    window.addEventListener("resize", drawConnections);
-  </script>
 </body>
 </html>
